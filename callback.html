@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Connect TikTok – Pipelineclips</title><link rel="stylesheet" href="style.css">
+<style>code{display:block;background:#1f1f23;padding:12px;border-radius:8px;word-break:break-all;color:#efeff1;margin:8px 0}button{background:#fe2c55;color:#fff;border:0;border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer}</style></head><body><main>
+<nav><a href="./">Pipelineclips</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+<h1 id="h">Connecting TikTok…</h1><div id="out"></div>
+<script>
+const p=new URLSearchParams(location.search),o=document.getElementById('out'),h=document.getElementById('h');
+if(p.get('error')){h.textContent='Authorization failed';o.innerHTML='<p>'+(p.get('error_description')||p.get('error')).replace(/</g,'&lt;')+'</p>';}
+else if(p.get('code')){h.textContent='TikTok account authorized';
+const code=p.get('code');o.innerHTML='<p>Paste this authorization code into the Pipelineclips dashboard. It expires in a few minutes and can only be used once.</p><code id="c"></code><button id="b">Copy code</button>';
+document.getElementById('c').textContent=code;document.getElementById('b').onclick=()=>navigator.clipboard.writeText(code).then(()=>document.getElementById('b').textContent='Copied');}
+else{h.textContent='No authorization data';o.innerHTML='<p>Start the connection from the Pipelineclips dashboard.</p>';}
+</script>
+</main></body></html>
